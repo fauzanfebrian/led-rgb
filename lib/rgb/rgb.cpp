@@ -1,4 +1,4 @@
-#include <main.h>
+#include <Arduino.h>
 
 const int min = 0;
 const int max = 255;
