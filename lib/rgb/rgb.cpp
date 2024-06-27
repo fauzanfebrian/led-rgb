@@ -1,5 +1,12 @@
 #include <Arduino.h>
 
+struct RGBPin
+{
+    int red;
+    int green;
+    int blue;
+};
+
 class RGBLed
 {
 public:
@@ -7,8 +14,7 @@ public:
     int greenValue;
     int blueValue;
 
-    RGBLed();
-    RGBLed(int redPin, int greenPin, int bluePin);
+    RGBLed(RGBPin pin);
 
     setRGBValue(int micValue);
 
@@ -18,19 +24,15 @@ private:
     int bluePin;
 };
 
-RGBLed::RGBLed(int redPin, int greenPin, int bluePin)
+RGBLed::RGBLed(RGBPin pin)
 {
-    this->redPin = redPin;
-    this->greenPin = greenPin;
-    this->bluePin = bluePin;
+    redPin = pin.red;
+    greenPin = pin.green;
+    bluePin = pin.blue;
 
     pinMode(redPin, OUTPUT);
     pinMode(greenPin, OUTPUT);
     pinMode(bluePin, OUTPUT);
-}
-
-RGBLed::RGBLed()
-{
 }
 
 RGBLed::setRGBValue(int micValue)

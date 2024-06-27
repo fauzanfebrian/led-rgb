@@ -7,7 +7,11 @@
 String jsonStr = "{\"name\":\"John\", \"age\":30, \"data\":{\"car\": \"BMW\", \"price\": 1000000}}";
 JsonPerson person = jsonStr;
 
-RGBLed rgbLed(9, 10, 11);
+RGBLed rgbLed{{
+    .red = 9,
+    .green = 10,
+    .blue = 11,
+}};
 
 void setup()
 {
@@ -25,7 +29,6 @@ void setup()
 }
 
 String inputString = "";
-bool stringComplete = false;
 
 void loop()
 {
@@ -50,7 +53,6 @@ void loop()
 
         Serial.println(inputString);
         inputString = "";
-        stringComplete = false;
     }
 }
 
@@ -60,16 +62,8 @@ void serialEvent()
     {
         // Get the new byte
         char inChar = (char)Serial.read();
+        Serial.print(inChar);
 
-        if (inChar == '\n')
-        {
-            Serial.println("Enter");
-            stringComplete = true;
-        }
-        else
-        {
-            inputString += inChar;
-            Serial.print(inChar);
-        }
+        inputString = Serial.readStringUntil('\n');
     }
 }

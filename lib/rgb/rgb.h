@@ -8,7 +8,7 @@ public:
   int greenValue;
   int blueValue;
 
-  RGBLed(int redPin, int greenPin, int bluePin);
+  RGBLed(RGBPin pin);
   setRGBValue(int micValue);
 
 private:
