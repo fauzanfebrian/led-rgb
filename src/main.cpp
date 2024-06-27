@@ -1,15 +1,13 @@
 #include <main.h>
 
-#define RED_PIN 9
-#define GREEN_PIN 10
-#define BLUE_PIN 11
-
 #define LED_PIN 2
 
 #define MIC_PIN A0
 
 String jsonStr = "{\"name\":\"John\", \"age\":30, \"data\":{\"car\": \"BMW\", \"price\": 1000000}}";
 JsonPerson person = jsonStr;
+
+RGBLed rgbLed(9, 10, 11);
 
 void setup()
 {
@@ -23,10 +21,6 @@ void setup()
     // set the pins as output
     pinMode(MIC_PIN, INPUT);
 
-    pinMode(RED_PIN, OUTPUT);
-    pinMode(GREEN_PIN, OUTPUT);
-    pinMode(BLUE_PIN, OUTPUT);
-
     Serial.println("RGB LED is ready");
 }
 
@@ -38,7 +32,7 @@ void loop()
     int micValue = analogRead(MIC_PIN);
 
     // set the color of the LED
-    setRGBValue(micValue, RED_PIN, GREEN_PIN, BLUE_PIN);
+    rgbLed.setRGBValue(micValue);
 
     if (stringComplete)
     {
