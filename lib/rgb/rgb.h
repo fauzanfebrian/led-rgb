@@ -1,6 +1,13 @@
 #ifndef RGB_VALUE_H
 #define RGB_VALUE_H
 
+struct RGBPin
+{
+  int red;
+  int green;
+  int blue;
+};
+
 class RGBLed
 {
 public:
@@ -9,7 +16,7 @@ public:
   int blueValue;
 
   RGBLed(RGBPin pin);
-  setRGBValue(int micValue);
+  auto setRGBValue(int micValue) -> void;
 
 private:
   int redPin;

@@ -16,7 +16,7 @@ public:
 
     RGBLed(RGBPin pin);
 
-    setRGBValue(int micValue);
+    auto setRGBValue(int micValue) -> void;
 
 private:
     int redPin;
@@ -35,7 +35,7 @@ RGBLed::RGBLed(RGBPin pin)
     pinMode(bluePin, OUTPUT);
 }
 
-RGBLed::setRGBValue(int micValue)
+auto RGBLed::setRGBValue(int micValue) -> void
 {
     int brightness = map(micValue, 0, 1023, 90, 255);
 

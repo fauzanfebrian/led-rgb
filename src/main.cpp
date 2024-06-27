@@ -13,7 +13,7 @@ RGBLed rgbLed{{
     .blue = 11,
 }};
 
-void setup()
+auto setup() -> void
 {
     Serial.begin(9600);
     while (!Serial)
@@ -30,14 +30,14 @@ void setup()
 
 String inputString = "";
 
-void loop()
+auto loop() -> void
 {
     int micValue = analogRead(MIC_PIN);
 
     // set the color of the LED
     rgbLed.setRGBValue(micValue);
 
-    if (stringComplete)
+    if (inputString != "")
     {
         inputString.trim();
         if (inputString == "on")
@@ -56,7 +56,7 @@ void loop()
     }
 }
 
-void serialEvent()
+auto serialEvent() -> void
 {
     while (Serial.available())
     {
