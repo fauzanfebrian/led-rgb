@@ -1,8 +1,6 @@
 #include <Arduino.h>
 #include <ESP8266WiFi.h>
 
-namespace ESP {
-
 IPAddress setupWifi() {
   const char *ssid = WIFI_SSID;
   const char *password = WIFI_PASSWORD;
@@ -26,5 +24,3 @@ IPAddress setupWifi() {
 
   return ip;
 }
-
-}  // namespace ESP

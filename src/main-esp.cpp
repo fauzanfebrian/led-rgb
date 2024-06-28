@@ -10,11 +10,11 @@ void setup() {
   }
   Serial.println("Serial communication started.");
 
-  ESP::setupWifi();
+  setupWifi();
 
   server.begin();
 }
 
 void loop() {
-  ESP::setupServer(server);
+  setupServer(server);
 }
