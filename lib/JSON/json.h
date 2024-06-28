@@ -1,12 +1,11 @@
 #ifndef JSON_CLASS_H
 #define JSON_CLASS_H
 
-#include <WString.h>
 #include <ArduinoJson.h>
+#include <WString.h>
 
-class JsonCar
-{
-public:
+class JsonCar {
+ public:
   String car;
   int price;
 
@@ -14,9 +13,8 @@ public:
   JsonCar(String jsonStr);
 };
 
-class JsonPerson
-{
-public:
+class JsonPerson {
+ public:
   String name;
   int age;
   JsonCar data;

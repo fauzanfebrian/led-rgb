@@ -1,9 +1,8 @@
-#include <WString.h>
 #include <ArduinoJson.h>
+#include <WString.h>
 
-class JsonCar
-{
-public:
+class JsonCar {
+ public:
   String car;
   int price;
 
@@ -13,14 +12,12 @@ public:
 
 JsonCar::JsonCar() : car(""), price(0) {};
 
-JsonCar::JsonCar(String jsonStr)
-{
+JsonCar::JsonCar(String jsonStr) {
   JsonDocument doc;
 
   DeserializationError error = deserializeJson(doc, jsonStr);
 
-  if (error)
-  {
+  if (error) {
     Serial.print(F("deserializeJson() failed: "));
     Serial.println(error.c_str());
     return;
@@ -30,9 +27,8 @@ JsonCar::JsonCar(String jsonStr)
   price = doc["price"].as<int>();
 };
 
-class JsonPerson
-{
-public:
+class JsonPerson {
+ public:
   String name;
   int age;
   JsonCar data;
@@ -43,14 +39,12 @@ public:
 
 JsonPerson::JsonPerson() : name(""), age(0) {};
 
-JsonPerson::JsonPerson(String jsonStr)
-{
+JsonPerson::JsonPerson(String jsonStr) {
   JsonDocument doc;
 
   DeserializationError error = deserializeJson(doc, jsonStr);
 
-  if (error)
-  {
+  if (error) {
     Serial.print(F("deserializeJson() failed: "));
     Serial.println(error.c_str());
     return;

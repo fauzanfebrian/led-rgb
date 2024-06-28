@@ -1,24 +1,22 @@
 #ifndef RGB_VALUE_H
 #define RGB_VALUE_H
 
-struct RGBPin
-{
+struct RGBPin {
   int red;
   int green;
   int blue;
 };
 
-class RGBLed
-{
-public:
+class RGBLed {
+ public:
   int redValue;
   int greenValue;
   int blueValue;
 
   RGBLed(RGBPin pin);
-  auto setRGBValue(int micValue) -> void;
+  void setRGBValue(int micValue);
 
-private:
+ private:
   int redPin;
   int greenPin;
   int bluePin;
