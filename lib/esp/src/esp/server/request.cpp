@@ -15,6 +15,8 @@ class ServerRequest {
 
   void sendJson(String json);
   void sendJson(String json, int statusCode);
+
+  void sendHtml(String html);
 };
 
 ServerRequest::ServerRequest(WiFiClient &client) {
@@ -62,6 +64,14 @@ void ServerRequest::sendJson(String json) {
   client.print("Content-Type: application/json\r\n");
   client.print("\r\n");
   client.print(json);
+  client.stop();
+}
+
+void ServerRequest::sendHtml(String html) {
+  client.print("HTTP/1.1 200 OK\r\n");
+  client.print("Content-Type: text/html\r\n");
+  client.print("\r\n");
+  client.print(html);
   client.stop();
 }
 

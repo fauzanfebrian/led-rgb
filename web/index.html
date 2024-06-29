@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>RGB Picker</title>
+        <script src="https://unpkg.com/vanilla-picker@2.12.3/dist/vanilla-picker.csp.min.js"></script>
+        <link href="https://unpkg.com/vanilla-picker@2.12.3/dist/vanilla-picker.csp.css" rel="stylesheet" />
+    </head>
+    <body>
+        <div
+            id="parent"
+            style="width: 400px; height: 400px; border-radius: 5px; max-width: 400px; max-height: 400px"
+        ></div>
+        <script>
+            const urlParams = new URLSearchParams(window.location.search)
+            const rgb = urlParams.get('rgb') || ''
+            const [red, green, blue] = rgb ? rgb.split(',').map(Number) : [0, 0, 0]
+            const parent = document.querySelector('#parent')
+            const picker = new Picker({ parent, color: [red, green, blue, 1] })
+            parent.style.background = `rgba(${red}, ${green}, ${blue}, 1)`
+            picker.onChange = function (color) {
+                parent.style.background = color.rgbaString
+            }
+            picker.onDone = function (color) {
+                const [red, green, blue] = color?.rgba || []
+                window.location.search = `rgb=${red},${green},${blue}`
+            }
+            picker.show()
+        </script>
+    </body>
+</html>

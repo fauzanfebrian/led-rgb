@@ -18,6 +18,8 @@ class ServerRequest {
 
   void sendJson(String json);
   void sendJson(String json, int statusCode);
+
+  void sendHtml(String html);
 };
 
 #endif
