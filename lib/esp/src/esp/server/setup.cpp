@@ -3,10 +3,7 @@
 
 #include "request.h"
 #include "web.h"
-
-uint8_t RED_PIN = D1;
-uint8_t GREEN_PIN = D2;
-uint8_t BLUE_PIN = D3;
+#include "ws2812.h"
 
 String extractRGBFromUrl(const String& url) {
   String rgbValue = "";
@@ -43,9 +40,7 @@ void setupServer(WiFiServer& server) {
 
     Serial.println("Setup RGB: " + String(red) + ", " + String(green) + ", " + String(blue));
 
-    analogWrite(RED_PIN, red);
-    analogWrite(GREEN_PIN, green);
-    analogWrite(BLUE_PIN, blue);
+    setLedsColor(red, green, blue);
   }
 
   req.sendHtml(RGB_WEB_CONTENT);

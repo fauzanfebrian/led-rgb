@@ -1,6 +1,8 @@
 #include <Arduino.h>
 #include <local-esp.h>
 
+#include "ws2812.h"
+
 WiFiServer server(80);
 
 void setup() {
@@ -13,6 +15,8 @@ void setup() {
   setupWifi();
 
   server.begin();
+
+  setupLeds();
 }
 
 void loop() {
